@@ -43,7 +43,7 @@ function Get-ConferenceSession {
     $sessionsArray = @(
         [PSCustomObject]@{
             "Time" = "8:00 AM"
-            "Presenter" = @("Jeffery Snover")
+            "Presenter" = @("Jeffrey Snover")
             "Title" = "Keynote"
         },
         [PSCustomObject]@{
@@ -157,7 +157,32 @@ function Get-Sponsors {
 }
 
 function Set-MySchedule {
-    <##>
+    <#
+        .SYNOPSIS
+        Displays conference schedule and allows selecting sessions to build a schedule.
+
+        .DESCRIPTION
+        Displays conference schedule and allows selecting sessions to build a schedule.
+
+        .OUTPUTS
+        System.Collections.ArrayList of selected conference sessions.
+
+        .EXAMPLE
+        Set-MySchedule
+
+        SessionId   Time      Presenter                     Title
+        ---------   ----      ---------                     -----
+        1           8:00 AM   {Jeffery Snover}              Keynote
+        2           9:15 AM   {Frank Lesniak, David Wiggs}  Rapid Function Development
+        3           10:10 AM  {Jeff Hicks}                  Building a Better Module Structure
+
+        Enter the SessionId to add to your schedule, or press Q to quit:
+
+        This example will display the schedule and allow you to enter the SessionId to add to your schedule.
+
+        .NOTES
+        The resulting $mySchedule array is not sorted by time if the sessions were added out of order.
+    #>
 
     [CmdletBinding()]
     param ()
